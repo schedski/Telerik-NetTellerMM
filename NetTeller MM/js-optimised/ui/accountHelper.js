@@ -1,0 +1,1 @@
+define(["lib/jquery","config/client","lib/jquery.mobile"],function(e,t){var n={},r="images/build/accounts/loan_333.png",i="images/build/accounts/savings_333.png",s="images/build/accounts/termdeposit_333.png";return n.getAccountTypeImageSrc=function(e){var t=i;switch(e){case 1:t=r;break;case 2:t=i;break;case 3:t=s}return t},n})

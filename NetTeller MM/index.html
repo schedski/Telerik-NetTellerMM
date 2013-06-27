@@ -1,42 +1,1728 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        
+<!-- Start of included file: head.html -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1, user-scalable=no">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/build/icons/ios/apple-touch-icon-iphone-demo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/build/icons/ios/apple-touch-icon-iphone4-demo.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/build/icons/ios/apple-touch-icon-ipad-demo.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/build/icons/ios/apple-touch-icon-ipad3-demo.png">
+
+    <title>NetTeller</title>
+
+    <!-- Turn off telephone number linking in Mobile Safari -->
+    <meta name="format-detection" content="telephone=no">
+    
+    <link href="compiled.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">.initialLoad > *{display:none}</style>
+
+    <script src="cordova.js"></script>
+    <script data-main="js-optimised/app.js" src="js-optimised/lib/require.js" ></script>
+    
+<!-- End of included file: head.html -->
+
     </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    <body class="initialLoad">
+        
+<!-- LANDING -->
+        
+<!-- Start of included file: home.html -->
+<!-- HOME / home -->
+<div data-role="page" id="home" data-theme="b">
+
+    <div data-role="content" data-theme="b">
+        <div class="main-logo"><img src="images/build/mainlogo@2x.png" width=200 height=51 alt="NetTeller logo"></div>
+
+        <ul data-role="listview" data-inset="true" data-theme="e" style="display: none;" data-bind="visible: pageMessage().length > 0">
+            <li><div data-bind="text: pageMessage"></div></li>
+        </ul>
+        <div id="homeButtons">
+            <div id="nettellerLoginButton">
+                <ul data-role="listview" data-inset="true">
+                    <li data-theme="b"><a data-bind="click: login">
+                        <h1>
+                            NetTeller</h1>
+                    </a></li>
+                </ul>
+                <p class="disclaimer" data-bind="text: futureOutageMessage, visible: futureOutageMessage().length > 0">
+                </p>
+            </div>            
+            <ul data-role="listview" data-inset="true">
+                <li data-theme="d"><a href="#help">Help</a></li>
+                <li data-theme="d"><a href="#contactUs">Contact Us</a></li>
+            </ul>            
+        </div>
+        
+        <p class="center-wrapper">
+            <small>&copy; 2013 The System Works Group Ltd</small>
+        </p>
+
+    </div>
+
+    <div data-role="popup" id="homeMessagePopup" data-overlay-theme="a">
+        <div data-role="content" data-theme="a">
+            <span data-bind="text: popupMessage"></span>
+            <p><a href="#home" data-role="button" data-theme="b">OK</a></p>
+        </div>
+    </div>       
+</div>
+
+<!-- End of included file: home.html -->
+
+
+<!-- LOGIN (PASSWORD) -->
+        
+<!-- Start of included file: passwordlogin.html -->
+<!-- PASSWORD LOGIN / loginPassword -->
+<div data-role="page" id="loginPassword" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Login</h1>
+    </div>
+
+    <div data-role="content" data-theme="b">
+    
+        <ul data-role="listview" data-inset="true" data-theme="d">
+            <li>
+                <form data-bind="jqmsubmit: loginClick">
+                    <fieldset>
+                        <label for="customerNumber">Customer number:</label>
+                        <input type="tel" name="customerNumber" data-bind="value: customerNumber" value="" autocomplete="off" />
+                        
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" data-bind="value: password" value="" autocomplete="off" />
+                        
+                        <button type="submit" data-theme="b">Login</button>
+                    </fieldset>
+                </form>
+            </li>
+        </ul>
+        
+        <div class="center-wrapper"><a href="#forgotPassword" data-rel="popup" data-position-to="window">Forgot your password?</a></div>
+        
+        <div data-role="popup" id="forgotPassword" data-overlay-theme="a">
+            <!--div data-role="header" data-theme="a">
+                <h1>Login</h1>
+            </div-->
+             
+            <!--a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a-->
+             
+            <div data-role="content" data-theme="a">
+                <p>If you have forgotten your password or are having trouble logging in, please contact the Call Centre on <a href="tel:123 123">123 123</a>.</p>
+                <div class="ui-grid-solo">
+                    <div class="ui-block-a"><a href="#loginPassword" data-role="button" data-theme="b">OK</a></div>
+                </div>
+            </div>                
+        </div>
+
+    </div>
+
+    <div data-role="popup" id="passwordLoginMessagePopup" data-overlay-theme="a">
+        <div data-role="content" data-theme="a">
+            <span data-bind="text: pageMessage"></span>
+            <a href="#loginPassword" data-role="button" data-theme="b" data-rel="back">OK</a>
+        </div>
+    </div>
+
+    <div data-role="footer" data-position="fixed"></div>
+
+</div>
+
+<!-- End of included file: passwordlogin.html -->
+
+
+<!-- HELP-->
+        
+<!-- Start of included file: help.html -->
+<!-- HELP / help -->
+<div data-role="page" id="help" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Help</h1>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        <div data-role="collapsible-set" data-theme="a" data-content-theme="c">
+                    <div data-role="collapsible" data-collapsed="true" data-inset="true">
+                        <h3>Login</h3>
+                        <div>
+            <h2>Logging in</h2>
+            <p>The first time you log into the MM 5.2.2 app, you will be required to enter the customer number and password you use to log into Internet Banking. Once you have successfully logged in, you will be given the option to create a PIN for quicker login in the future.</p>
+    
+            <h3>Setting up a PIN</h3>
+            <p>When setting a PIN for the first time, you will need to enter a 4-digit number and re-enter it to confirm. The next time you log in to the app, you will be prompted for your PIN instead of your customer number and password.</p>
+            <p>If you forget your PIN, you can tap the 'Forgot PIN' button and login with your customer number and password instead. If you still have problems logging in, you will need to contact the call centre, who will help reset your password.</p>
+    
+            <h3>Setting a PIN</h3>
+            <p>If you chose not to set up a PIN when you first logged in, you can do so at a later date by going to the Settings tab and tapping the 'Set up your PIN' option. Note, this option is disabled if a PIN has already been set up on your device for a different customer number. See the 'Deregistering a device' below if you wish to change this.
+    
+            <h3>Changing your PIN</h3>
+            <p>You can change your PIN at any time once you are logged in. Go to the Settings tab and select the 'Change your PIN' option.</p>
+    
+            <h3>Deregistering a device</h3>
+            <p>You can choose to disable PIN login on your device altogether if you no longer wish to use this feature. Go to the Settings tab and tap the 'Deregister Device' option. This will revert the login method back to customer number and password. Note that if you choose to setup the deice for PIN login again in the future, the original PIN will be used. You can however, choose to change your PIN as explained in 'Changing your PIN' above.</p>
+            <p>Note: if you do not see the 'Deregister Device' option in Settings, there is no PIN currently set up for the logged in customer number.            
+        </div>
+                    </div>    
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Accounts and Balances</h3>
+                        <div>
+            <h2>Viewing Account Balances</h2>
+            <p>When you have successfully logged in, your accounts will be listed, along with their current and available balances. Tap an account to view the most recent transactions for that account.</p>
+            <p>You can view transactions from the last 30 days in the app, although this may vary depending on your institution and the type of account being viewed. For a more detailed list of transactions, please log into Internet Banking.</p>
+        </div>
+                    </div>    
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Payments</h3>
+                        <div>
+            <h2>Payments</h2>
+            <p>You can perform the following tasks on this tab:</p>
+            <p>- <strong>Transfer</strong> money between your accounts and/or those that you have authority to debit and/or credit from.</p>
+            <p>- <strong>Pay</strong> to accounts at other institutions using a valid BSB and account number.</p>
+            <p>- Make <strong>B<span class="bpay">PAY</span></strong> payments using a valid biller code and customer reference number (CRN).</p>
+            <p>Note: depending on how your accounts are setup, you may not be able to pay to new payees or BPAY billers. See the Contacts section for more details on adding new payees and billers.</p>
+    
+            <h3>Transfer</h3>
+            <p>Tap the Payments tab and choose the 'Transfer' option. Select an account to transfer money from and an account to transfer from. Enter the amount and a short description and tap Submit.</p>
+    
+            <h3>Pay</h3>
+            <p>Tap the Payments tab and choose the 'Pay' option. Select the account from which you want to pay and then choose the contact you want to pay. You will be taken to the Contacts page where you can either choose an existing saved payee or add a new one (if this option is available).</p>
+            <p>Note: if you have Two-Factor Security enabled, you will be required to enter a One Time Password in order to add a new payee.</p>
+    
+            <h3>B<span class="bpay">PAY</span></h3>
+            <p>Tap the Payments tab and choose the 'B<span class="bpay">PAY</span>' option. Select the account from which you want to pay and then choose the contact you want to pay. You will be taken to the Contacts page where you can either choose an existing saved biller or add a new one (if this option is available).</p>
+            <p>Note: if you have Two-Factor Security enabled, you will be required to enter a One Time Password in order to add a new biller.</p>
+        </div>
+                    </div>    
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Contacts</h3>
+                        <div>
+            <h2>Contacts</h2>
+            <p>You can manage an address book of payees and B<span class="bpay">PAY</span> billers from within the app to make it easier to pay accounts and bills in the future.</p>
+            <p>Tap the Contacts tab to view any existing payees or billers that may have aleady been set up on your account in Internet Banking. If you do not have any contacts, you can add them from within the app (if this option is available).</p>
+            <p>Note: if you have Two-Factor Security enabled, you will be required to enter a One Time Password via an appropriate security device (SMS or VASCO) when adding new payees and billers.</p>
+    
+            <h3>Managing Contacts</h3>
+            <p>You can edit the nickname of saved payees and billers or delete them from your Contacts altogether. Tap the gear icon alongside the relevant contact and choose modify or delete. The contact will be updated or removed in Internet Banking as well.</p>
+            <p>Note: for security reasons you cannot change the BSB or account number for payees, or the biller code or CRN for billers. If you need to modify these details, delete the payee or biller and add the new details.</p>
+        </div>
+                    </div>    
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Security</h3>
+                        <div>
+            <h2>Two-Factor Security</h2>
+            <p>Two-Factor Security, also known as Two-Factor Authentication, or 2FA, is an additional layer of security that protects your account from fraudulent use. If your bank has enabled it, or you are registered for 2FA, you will be required to enter a One Time Password that has been either sent to your registered mobile phone number or generated by a token device that you own when adding new payees or billers.</p>
+        </div>
+                    </div>    
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>About MM 5.2.2</h3>
+                        <div>
+            <h2></h2>
+            <p>The MM 5.2.2 app is powered by NetTeller Mobile Money.</p>
+            <p><small>&copy; 2013 The System Works Group Ltd</small></p>
+            
+            <p><small>Client: BASE-ULTRACS<br/>
+            Target environment: -sit<br/>
+            Built on A01075 by Richard.Schedler, 2013-06-20 23:10:43<br/>
+            Version: 0.1.9456<br/>
+            PhoneGap Version: 2.7.0<br/>
+            Target Device: handset<br/>
+            Package ID: au.com.tswg.netteller.app.mm522.sit.ultracs<br/>
+            Endpoint: https://netteller.bankoftsw.com/5.2/sit/ultracs/</small></p>
+        
+        </div>
+                    </div>
+        </div>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h4><img src="images/build/nt-logo@2x.png" width=117 height=30 alt="NetTeller logo"></h4>
+    </div>
+
+</div>
+<!-- End of included file: help.html -->
+
+                
+<!-- PASSWORD CHANGE -->
+        
+<!-- Start of included file: passwordchange.html -->
+<!-- CHANGE PASSWORD / passwordChange -->
+<div data-role="page" id="passwordChange" data-theme="b">
+    
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+        <h1>Change Password</h1>
+    </div>
+
+    <div data-role="content" data-theme="b">
+
+        <p>You have logged in with a temporary password. For security reasons you must change your password. Enter a new password and confirm.</p>
+            
+        <ul data-role="listview" data-inset="true" data-theme="d">
+        	<li>
+                <form data-bind="jqmsubmit: passwordChangeClick">
+                    <fieldset data-theme="b">
+                        <label for="password">New password:</label>
+                        <input type="password" name="password" data-bind="value: password" value="" maxlength="20" autocomplete="off" />
+                        
+                        <label for="passwordConfirm">Confirm new password:</label>
+                        <input type="password" name="passwordConfirm" data-bind="value: passwordConfirm" value="" maxlength="20" autocomplete="off" />
+                        
+                        <button type="submit" data-theme="b">Submit</button>
+                    </fieldset>
+                </form>
+            </li>
+        </ul>
+        <p><small>Your password must have a minimum of 6 and a maximum of 20 characters with at least 1 alpha, 1 numeric, 1 uppercase letter and 1 lowercase letter.</small></p>
+
+    <div data-role="popup" id="passwordChangeMessagePopup" data-overlay-theme="a">
+        <div data-role="content" data-theme="a">
+            <span data-bind="text: pageMessage"></span>
+            <a href="#loginPassword" data-role="button" data-theme="b" data-rel="back">OK</a>
+	    </div>
+    </div>
+
+    </div>
+
+    <div data-role="footer" data-position="fixed"></div>
+
+</div>
+
+<!-- End of included file: passwordchange.html -->
+
+        
+<!-- PIN REGISTRATION -->
+        
+<!-- Start of included file: pinregister.html -->
+<!-- REGISTER DEVICE / register -->
+<div data-role="page" id="register" data-theme="b">
+    
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Set up PIN</h1>
+    </div>
+    
+    <div data-role="content" data-theme="b">
+        <p>It looks like this is the first time you are using this app.</p><p>Would you like to set up a PIN for quicker login in the future?</p>
+        
+        <div class="ui-grid-a">
+            <div class="ui-block-a"><a href="" data-bind="click: noClick" data-role="button" data-icon="delete" data-theme="a">No</a></div>
+            <div class="ui-block-b"><a href="" data-bind="click: yesClick" data-role="button" data-icon="check" data-theme="b">Yes</a></div>
+        </div>
+                
+        <p><small>You can always set up a PIN later. Have a look in the Settings section.</small></p>
+    </div>
+</div>
+
+<!-- REGISTER DEVICE WITH EXISTING PIN / registerExistingPin -->
+<div data-role="page" id="registerExistingPin" data-theme="b">
+    
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+        <h1>Set up PIN</h1>
+    </div>
+    
+    <div data-role="content" data-theme="b">
+        <p>It looks like PIN access has already been set up for this customer number.</p><p>Would you like to use your existing PIN to login on this device in future?</p>
+        
+        <div class="ui-grid-a">
+            <div class="ui-block-a"><a href="" data-bind="click: noClick" data-role="button" data-icon="delete" data-theme="a">No</a></div>
+            <div class="ui-block-b"><a href="" data-bind="click: registerExistingPin" data-role="button" data-icon="check" data-theme="b">Yes</a></div>
+        </div>
+        <div id="registerPinMessage" data-bind="text: status"></div>
+    </div>
+</div>
+<!-- End of included file: pinregister.html -->
+
+    
+<!-- TOUR -->
+        
+<!-- Start of included file: tour.html -->
+<!-- TOUR 1 / registrationTour -->
+<div data-role="page" id="pageRegistrationTour" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+        <h1>Welcome</h1>
+        <a href="#accounts" data-icon="" class="ui-btn-right" data-theme="b">Skip</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        <p>
+            Your device has now been setup to enable you to login using just a PIN in future.
+            If you wish to turn this feature off, go to the Settings option and disable PIN
+            Login.
+        </p>
+        <p>
+            Now that your device is set up, please take a minute or two to familiarise yourself
+            with the features of this app.
+        </p>
+        <p><img src="images/build/placeholder.png" /></p>
+        <p>
+            <a href="" data-role="button" data-inline="true" data-mini="true" class="ui-btn-active">1</a>
+            <a href="#pageRegistrationTour2" data-role="button" data-inline="true" data-mini="true" class="">2</a>
+            <a href="#pageRegistrationTour3" data-role="button" data-inline="true" data-mini="true" class="">3</a>
+        </p>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+    
+    
+<!-- TOUR 2 / registrationTour2 -->
+<div data-role="page" id="pageRegistrationTour2" data-theme="b">
+    
+    <div data-role="header" data-theme="a">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Welcome</h1>
+        <a href="#accounts" data-icon="" class="ui-btn-right" data-theme="b">Skip</a>
+    </div>
+    
+    <div data-role="content" data-theme="b">
+        <p><img src="images/build/placeholder.png" /></p>
+        <p>
+            <a href="#pageRegistrationTour" data-role="button" data-inline="true" data-mini="true" class="">1</a>
+            <a href="" data-role="button" data-inline="true" data-mini="true" class="ui-btn-active">2</a>
+            <a href="#pageRegistrationTour3" data-role="button" data-inline="true" data-mini="true" class="">3</a>
+        </p>
+    </div>
+    
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- TOUR 3 / registrationTour3 -->
+<div data-role="page" id="pageRegistrationTour3" data-theme="b">
+    
+    <div data-role="header" data-theme="a">
+       <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+       <h1>Welcome</h1>
+        <a href="#accounts" data-icon="" class="ui-btn-right" data-theme="b">Done</a>
+    </div>
+    
+    <div data-role="content" data-theme="b">
+        <p><img src="images/build/placeholder.png" /></p>
+        <p>
+            <a href="#pageRegistrationTour" data-role="button" data-inline="true" data-mini="true" class="">1</a>
+            <a href="#pageRegistrationTour2" data-role="button" data-inline="true" data-mini="true" class="">2</a>
+            <a href="" data-role="button" data-inline="true" data-mini="true" class="ui-btn-active">3</a>
+        </p>
+    </div>
+    
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- End of included file: tour.html -->
+
+    
+<!-- LOGIN (PIN) -->
+        
+<!-- Start of included file: pinkeypad.html -->
+<!-- PIN LOGIN / loginPin -->
+<div data-role="page" id="pinKeypad" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1 data-bind="text: titleText"></h1>
+    </div>
+
+      <div id="errorMessagePopup" data-role="popup" data-overlay-theme="a"> 
+            <div data-role="content" data-theme="a">
+                <ul data-role="listview" data-inset="true" data-theme="e" data-bind="visible: errorMessage().length > 0">
+                    <li><div data-bind="text: errorMessage"></div></li>
+                </ul>
+                <a data-role="button" data-rel="back" data-theme="b">OK</a>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        
+    <div id="forgotPinPopup" data-role="popup" data-overlay-theme="a">
+        <div data-role="content" data-theme="a">
+            <p>Login using your customer number and password instead?</p>
+            <a data-bind="click: forgetYes" data-role="button" data-theme="b">Yes</a>
+            <a data-bind="click: forgetNo" data-role="button" data-theme="a">No</a>
+        </div>
+    </div>
+
+    <div id="contentArea" data-role="content" data-theme="a" class="">
+        
+            <div id="pinEntryArea">
+
+                <div class="center-wrapper" id="pinMessage">
+			        <span data-bind="text: pinInfoMessage"></span>
+                </div>
+         
+                <div id="pinCode" class="ui-grid-c" data-bind="foreach: pinCodeBoxes">
+                    <div data-bind="css: $data">
+                        <div data-bind="text: $root.hiddenPinDigit($index())" class="ui-bar ui-bar-d pinCodeBox">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <canvas id="keypadCanvas"></canvas>
+            <img id="backspace-img" src="images/build/backspace-icon.png" />
+            <img id="backspace-img-active" src="images/build/backspace-icon-active.png" />
+
+    </div>
+
+    <div data-role="footer" data-position="" >
+    </div>
+    <!--div id="keypad" data-role="footer" data-fullscreen="false" data-position="fixed" data-tap-toggle="false">            
+        <canvas id="keypadCanvas"></canvas>
+        <img id="backspace-img" src="images/build/backspace-icon.png" />
+        <img id="backspace-img-active" src="images/build/backspace-icon-active.png" />     
+    </div>-->
+</div>
+<!-- End of included file: pinkeypad.html -->
+
+    
+<!-- TERMS AND CONDITIONS -->
+        
+<!-- Start of included file: terms.html -->
+<!-- TERMS AND CONDITIONS ACCEPTANCE / loginTerms -->
+<div data-role="page" id="loginTerms" data-theme="b">
+    
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+        <h1>Terms and Conditions</h1>
+    </div>
+    
+    <div data-role="content" data-theme="b">
+        <p><small>Please read and accept these Terms and Conditions before continuing.</small></p>
+        <form>
+
+            <fieldset>
+                <p data-bind="html: message"></p>
+                <div data-bind="visible: hasMessageUrl">
+                    <p><a target="#" data-bind="attr: { href: messageUrl }">View these Terms and Conditions in your default web browser</a></p>
+                </div>
+            </fieldset>
+            
+            <fieldset>    
+                <button data-bind="click: acceptClick" data-theme="b">Accept</button>
+
+                <div id="progressFailReason" data-bind="text: status"></div>
+            </fieldset>
+
+        </form>
+    </div>
+    
+    <div data-role="footer" data-position="fixed"></div>
+
+</div>
+
+<!-- End of included file: terms.html -->
+
+
+<!-- ACCOUNT BALANCES -->
+        
+<!-- Start of included file: balances.html -->
+<!-- BALANCES / accounts -->
+<div data-role="page" id="accounts" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <h1>Accounts</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b" >
+
+        <ul data-role="listview" data-inset="false" data-theme="d" data-bind="foreach: accounts, jqmRefreshList: accounts, visible: hasAccounts">
+            <li class="account-summary" data-icon="false" data-theme="d">
+                <a href="#transactions" data-bind="click: ViewTransactions">
+                    <img data-bind="attr: { src: AccountTypeImage }" class="ul-li-thumb" width="40" height="40" />
+                    <h2 data-bind="text: AccountName"></h2>
+                    <p class="account-details"><span class="bsb" data-bind="text: BSB">-</span> | <span class="account-number" data-bind="text: AccountNumber"></span></p>
+                    <div class="balances">
+                        <p class="current-balance">Bal: <span data-bind="text: DisplayCurrentBalance">-</span></p>
+                        <p class="available-balance ui-li-aside">Avail: <span data-bind="text: DisplayAvailableBalance">-</span></p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        
+        <ul data-role="listview" data-inset="true" data-theme="e" data-bind="visible: !hasAccounts()">
+            <li>
+                <div id="noAccountsMessage" class="noDataMessage">
+                    <span data-bind="text: reasonForNoAccounts"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid" class="ui-btn-active ui-state-persist">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- End of included file: balances.html -->
+
+        
+<!-- ACCOUNT TRANSACTIONS -->
+        
+<!-- Start of included file: transactions.html -->
+<!-- TRANSACTIONS / transactions -->
+<div data-role="page" id="transactions" data-theme="b">
+    
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Transactions</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+    
+    <div data-role="content" data-theme="b" data-bind="visible: HasError">
+        <ul data-role="listview" data-inset="false" data-theme="e">
+            <li>
+                <div id="transactionsErrorMessage" data-bind="text: ErrorMessage"></div>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="content" data-theme="b" data-bind="visible: ShowContent">
+
+        <ul data-role="listview" data-inset="false" data-theme="d">
+            <li class="account-summary">
+                <img data-bind="attr: { src: AccountTypeImage }" class="ul-li-thumb" width="40" height="40" />
+                <h1 data-bind="text: AccountName"></h1>
+                <p class="account-details"><span class="bsb" data-bind="text: BSB">-</span> | <span class="account-number" data-bind="text: AccountNumber"></span></p>
+                <div class="balances">
+                    <p class="current-balance">Bal: <span data-bind="text: DisplayCurrentBalance">-</span></p>
+                    <p class="available-balance ui-li-aside">Avail: <span data-bind="text: DisplayAvailableBalance">-</span></p>
+                </div>
+            </li>
+        </ul>
+
+        <!-- TO DO -->
+        <!-- Pass in selected account when navigating to relevant payment screen -->
+        <!-- Hide buttons altogether if the account cannot be transacted on, e.g. loan account -->
+        <!-- Disable payment types that are unavailable for the selected account -->
+        <!--div class="ui-bar ui-bar-b nt-toolbar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a center-wrapper"><a href="#payOwn" data-role="" ><img src="images/build/payments/payown-icon.png" width="32" height="32" alt="" class="ul-li-thumb filter-drop-shadow"></a></div>
+                <div class="ui-block-b center-wrapper"><a href="#payOther" data-role=""><img src="images/build/payments/payother-icon.png" width="32" height="32" alt="" class="ul-li-thumb filter-drop-shadow"></a></div>
+                <div class="ui-block-c center-wrapper"><a href="#payBpay" data-role=""><img src="images/build/payments/paybpay-icon.png" width="32" height="32" alt="" class="ul-li-thumb filter-drop-shadow"></a></div>
+            </div>
+        </div-->
+
+
+        <div id="transactionList" data-bind="visible: AccountHasTransactions">
+            <p></p>
+            <ul data-role="listview" data-inset="false" data-theme="d" data-bind="foreach: GroupedTransactionList, jqmRefreshList: GroupedTransactionList">
+                <li data-role="list-divider" data-bind="text: Date"></li>
+                <!-- ko foreach: Transactions -->
+                <li class="transaction">
+                    <div data-bind="foreach: ReferenceLines">
+                        <p data-bind="text: $data"></p>
+                    </div>                    
+                    <p class="transaction-amount ui-li-aside"><strong data-bind="text: DisplayAmount"></strong></p>
+                </li>
+                <!-- /ko -->
+            </ul>
+            <div data-role="controlgroup" data-type="" data-bind="visible: MoreTransactionsAvailable">
+                <a href="#transactions" data-role="button" data-theme="b" data-bind="click: ShowMoreTransactions" >Show more transactions...</a>
+            </div>
+        </div>
+        
+        <div data-bind="visible: !AccountHasTransactions()">
+            <br/>
+            <ul data-role="listview" data-inset="true" data-theme="e">
+                <li><div id="noTransactionsMessage" class="noDataMessage">No transactions within the last 30 days. Please log in to Internet Banking to view older transactions.</div></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid" class="ui-btn-active ui-state-persist">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- End of included file: transactions.html -->
+
+        
+<!-- PAYMENTS -->
+        
+<!-- Start of included file: payments.html -->
+<!-- PAYMENTS MENU / payments -->
+<div data-role="page" id="payments" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Payments</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        <ul data-role="listview" data-inset="true" data-theme="d">
+            <li>
+                <a href="#payOwn" data-transition="none" >
+                    <img src="images/build/payments/payown-icon_333.png" width="60" height="60" alt="Transfer Between My Acccounts" class="ul-li-thumb">
+                    <h2>Transfer</h2><p>Move money between my accounts</p>
+                </a>
+            </li>
+            <li>
+                 <a data-transition="none" data-bind="click: onPayOtherClick">
+                    <img src="images/build/payments/payother-icon_333.png" width="60" height="60" alt="Transfer To Other Acccounts" class="ul-li-thumb">
+                    <h2>Pay</h2><p>Pay other accounts</p>
+                </a>
+            </li>
+            <li>
+                <a data-transition="none" data-bind="click: onPayBPayClick">
+                    <img src="images/build/payments/paybpay-icon_333.png" width="60" height="60" alt="Pay BPAY Bill" class="ul-li-thumb">
+                    <h2>B<span style="font-size:85%;">PAY</span></h2><p>Pay a BPAY Bill</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div data-role="popup" id="payOtherDisabledMessagePopup" data-overlay-theme="a">        
+       <div data-role="content" data-theme="a">
+            <p>No payees available. To make a payment please add a new payee via Internet Banking first.</p>
+            <a href="#payments" data-role="button" data-theme="b" data-rel="back">OK</a>
+        </div>
+    </div>
+
+    <div data-role="popup" id="payBPayDisabledMessagePopup" data-overlay-theme="a">        
+       <div data-role="content" data-theme="a">
+            <p>No billers available. To make a payment please add a new biller via Internet Banking first.</p>
+            <a href="#payments" data-role="button" data-theme="b" data-rel="back">OK</a>
+        </div>
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments" class="ui-btn-active ui-state-persist">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!-- End of included file: payments.html -->
+
+        
+<!-- PAY OWN -->
+        
+<!-- Start of included file: payown.html -->
+<!-- PAY OWN ACCOUNTS / payOwn -->
+<div data-role="page" id="payOwn" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Pay to Own Account</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+    
+    <div data-role="content" data-theme="b" >
+        
+        <ul data-role="listview" data-inset="true" data-theme="d" data-bind="visible: allowTransfer">
+            <li>
+                <label for="payOwnTransferFrom">Pay from:</label>
+                <select name="payOwnTransferFrom" id="payOwnTransferFrom" data-theme="d" 
+                        data-bind="options: transferFromAccounts,
+                        optionsText: 'AccountNumNameAndAvailBal',
+                        id: 'AccountNumber',
+                        value: payOwnTransferFromSelectedAccount,
+                        event: { change: accountSelectionChanged},
+                        jqmRefreshSelect: payOwnTransferFromSelectedAccount">
+                </select>
+                
+                <label for="payOwnTransferTo">Pay to:</label>
+                <select name="payOwnTransferTo" id="payOwnTransferTo" data-theme="d" 
+                        data-bind="options: transferToAccounts,
+                        optionsText: 'AccountNumAndName',
+                        id: 'AccountNumber',
+                        value: payOwnTransferToSelectedAccount,
+                        event: { change: accountSelectionChanged },
+                        jqmRefreshSelect: payOwnTransferToSelectedAccount">
+                </select>
+                
+                <fieldset>
+                    <label for="payOwnAmount" class="ui-hidden-accessible">Amount:</label>
+                    <input type="number" name="payOwnAmount" id="payOwnAmount" data-bind="value: amount" placeholder="Amount"/>
+
+                    <label for="payOwnDescription" class="ui-hidden-accessible">Description:</label>
+                    <input type="text" name="payOwnDescription" id="payOwnDescription" value="" maxlength="18" data-bind="value: description" placeholder="Description"/>
+                    
+                    <a data-role="button" data-theme="b" data-rel="popup" data-position-to="window" data-bind="click: confirmPayOwnDetails" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">
+                        <span>Submit</span>
+                    </a>
+                </fieldset>
+            </li>
+        </ul>
+        
+        <!--
+            <fieldset>
+                <label for="payOwnAmount">Amount:</label>
+                <input type="tel" name="payOwnAmount" id="Tel1" value="10.00" placeholder="$" />
+
+                <label for="payOwnDescription">Description:</label>
+                <input type="text" name="payOwnDescription" id="Text1" value="" placeholder="(Optional)" />
+
+                <div data-role="collapsible" data-theme="c" data-content-theme="c">
+                    <h3>More options...</h3>
+                    <label for="payOwnTransferDate">Transfer date:</label>
+            
+                    <input type="date" name="payOwnTransferDate" id="payOwnTransferDate" value="" />
+
+                    <select name="payOwnTransferFreq" id="payOwnTransferFreq" data-theme="d">
+                        <option value="onceoff">Once-off</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+
+                    <label for="payOwnEndByDate">End by:</label>
+                    <input type="date" name="payOwnEndByDate" id="payOwnEndByDate" value="" />
+                </div>
+            </fieldset>
+            -->
+        
+        <div data-role="popup" id="payOwnConfirm" data-overlay-theme="a" data-bind="visible: allowTransfer">
+            <div data-role="header">
+                <h1>Confirm</h1>
+            </div>
+            <div data-role="content" data-theme="a">
+                <p>
+                    Please confirm transfer <span data-bind="text: description"></span> of $<span data-bind="text: amount"></span> from <span data-bind="text: payOwnTransferFromSelectedAccountNameAndNum"></span> to <span data-bind="text: payOwnTransferToSelectedAccountNameAndNum"></span>.
+                </p>
+                
+                <a data-role="button" data-theme="b" data-bind="click: performPayOwnTransfer">Transfer now</a>
+                <a href="#payOwn" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+            </div>
+        </div>
+        
+        <div data-role="popup" id="payOwnMessagePopup" data-overlay-theme="a">
+            <div data-role="content" data-theme="a">
+                <span data-bind="text: pageMessage"></span>
+                <a href="#payOwn" data-role="button" data-theme="b" data-rel="back">OK</a>
+	        </div>
+        </div>
+
+    </div>
+    
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments" class="ui-btn-active ui-state-persist">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- PAY OWN SUCCESS / payOwnSuccess -->
+<div data-role="page" id="payOwnSuccess" data-theme="b">
+
+    <div data-role="header" data-theme="a">
+       <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Pay to Own Account</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        <h2>Payment successful!</h2>
+        <p>
+            Your transfer <span data-bind="text: description"></span> of $<span data-bind="text: amount"></span> from <span data-bind="text: transferFromAccountNumAndName"></span> to <span data-bind="text: transferToAccountNumAndName"></span> has been successfully processed.
+        </p>
+
+        <p>Receipt number: <strong><span data-bind="text: cbsReceiptNumber"></span></strong></p>
+        
+        <a href="#payments" data-role="button" data-theme="b">Done</a>
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments" class="ui-btn-active ui-state-persist">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!-- End of included file: payown.html -->
+
+        
+<!-- PAY OTHER -->
+        
+<!-- Start of included file: payother.html -->
+<!-- PAY OTHER ACCOUNTS / payOther -->
+<div data-role="page" id="payOther" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Pay Other Accounts</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+
+        <ul data-role="listview" data-inset="true" data-theme="d" data-bind="visible: allowTransfer">
+            <li>
+                <label for="payOtherTransferFrom">Pay from:</label>
+                <select name="payOtherTransferFrom" id="payOtherTransferFrom" data-theme="d" 
+                        data-bind="options: transferFromAccounts,
+                            optionsText: 'AccountNumNameAndAvailBal',
+                            id: 'AccountNumber',
+                            value: payOtherTransferFromSelectedAccount,
+                            jqmRefreshSelect: payOtherTransferFromSelectedAccount">
+                </select>
+                    
+                <div>
+                    <label for="payOtherTransferTo" class="listview-label">Pay to:</label>
+                    <ul data-role="listview" data-inset="true" data-theme="d">
+                        <li class="contact-list">
+                            <a  id="payOtherTransferTo" data-bind="click: selectContact">
+                                <img data-bind="attr: { src: selectedContactImage }" class="ul-li-thumb" width="40" height="40" />
+                                <h2 data-bind="text: selectedContactAccountName" class="payto-wrap"></h2>
+                                <p data-bind="text: selectedContactAccountBSBAndNumber, visible: selectedContact() != null"></p> 
+                            </a>
+                            <a data-bind="click: addPayee" data-icon="plus" data-theme="d" data-iconpos="notext">Add a Payee</a>
+                        </li>
+                    </ul>
+                    
+                    <label for="payOtherAmount" class="ui-hidden-accessible">Amount:</label>
+                    <input type="number" name="payOtherAmount" id="payOtherAmount" value="" placeholder="Amount" data-bind="value: amount" />
+                    
+                    <label for="payOtherDescription" class="ui-hidden-accessible">Description:</label>
+                    <input type="text" name="payOtherDescription" id="payOtherDescription" value="" placeholder="Description" maxlength="18" data-bind="value: description" />
+                    
+                    <a data-role="button" data-theme="b" data-rel="popup" data-position-to="window" data-bind="click: confirmPayOtherDetails" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">
+                        <span>Submit</span>
+                    </a>
+                </div>
+              
+            </li>
+        </ul>
+        
+        <div data-role="popup" id="payOtherMessagePopup" data-overlay-theme="a">
+            <div data-role="header" data-theme="a">
+            </div>
+            <div data-role="content" data-theme="a">
+                <span data-bind="text: pageMessage"></span>
+                <a href="#payOther" data-role="button" data-theme="b" data-rel="back">OK</a>
+	        </div>
+        </div>
+
+        <div data-role="popup" id="choosePayeePopup" data-overlay-theme="a">
+            <div data-role="content" data-theme="a">
+                <span>Please choose a payee.</span>
+                <!--a data-role="button" data-theme="b" data-bind="click: choosePayee">OK</a-->
+                <a data-role="button" data-theme="b" href="#payOther" data-rel="back">OK</a>
+	        </div>
+        </div>
+    
+        <div data-role="popup" id="payOtherConfirm" data-overlay-theme="a">
+            <div data-role="header">
+                <h1>Confirm</h1>
+            </div>
+            <div data-role="content" data-theme="a">
+                <p>
+                    Please confirm payment <span data-bind="text: description"></span> of $<span data-bind="text: amount"></span> from <span data-bind="text: payOtherTransferFromSelectedAccountNameAndNum"></span> to <span data-bind="text: selectedContactAccountName() ? selectedContactAccountName() : null"></span> (<span data-bind="text: selectedContactAccountBSBAndNumber() ? selectedContactAccountBSBAndNumber() : null"></span>).
+                </p>
+                
+                <p class="disclaimer">It is your responsibility to ensure that the details (including Recipient Name, BSB and Account Number) provided by you are correct or your payment may be unsuccessful or may be paid to an unintended account. We do not check that the details provided by you are correct. Any error in payment details may result in a loss of funds. To the extent permitted by law, Bank of NetTeller Ltd. is not liable for loss arising from any error in instructions given by you.</p>
+                
+                <a data-role="button" data-theme="b" data-bind="click: performPayOtherTransfer">Pay now</a>
+                <a href="#payOther" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+            </div>
+        </div>
+    
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments" class="ui-btn-active ui-state-persist">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- PAY OTHER RECEIPT / payOtherReceipt -->
+<div data-role="page" id="payOtherReceipt" data-theme="b">
+
+    <div data-role="header" data-theme="a">
+       <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Pay Other Accounts</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+     </div>
+
+    <div data-role="content" data-theme="b">
+        <h2>Payment successful!</h2>
+        <p>
+            Your payment <span data-bind="text: description"></span> of $<span data-bind="text: amount"></span> from <span data-bind="text: transferFromAccountNumAndName()"></span> to <span data-bind="text: selectedContactAccountName() ? selectedContactAccountName() : null"></span> (<span data-bind="text: selectedContactAccountBSBAndNumber() ? selectedContactAccountBSBAndNumber() : null"></span>) has been successfully processed.
+        </p>
+        
+        <p>Receipt number: <strong><span data-bind="text: cbsReceiptNumber()"></span></strong></p>
+        
+        <a href="#payments" data-role="button" data-theme="b">Done</a>
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments" class="ui-btn-active ui-state-persist">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- End of included file: payother.html -->
+
+        
+<!-- PAY BPAY -->
+        
+<!-- Start of included file: paybpay.html -->
+<!-- PAY BPAY / payBpay -->
+<div data-role="page" id="payBpay" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Pay B<span class="bpay">PAY</span> Bill</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+    
+        <ul data-role="listview" data-inset="true" data-theme="d" data-bind="visible: allowTransfer">
+            <li>
+                <label for="payBPayTransferFrom">Pay from:</label>
+                <select name="payBPayTransferFrom" id="payBPayTransferFrom" data-theme="d" 
+                        data-bind="options: transferFromAccounts,
+                            optionsText: 'AccountNumNameAndAvailBal',
+                            id: 'AccountNumber',
+                            value: payBPayTransferFromSelectedAccount,
+                            jqmRefreshSelect: payBPayTransferFromSelectedAccount">
+                </select>
+ 
+                <fieldset>
+                    <label for="payBpayTransferTo" class="listview-label">Pay to:</label>
+                    <ul data-role="listview" data-inset="true" data-theme="d">
+                        <li class="contact-list">
+                            <a id="payBpayTransferTo"  data-bind="click: selectContact">
+                                <img data-bind="attr: { src: selectedContactImage }" class="ul-li-thumb" width="40" height="40" />
+                                <h2 data-bind="text: selectedContactBillerName" class="payto-wrap"></h2>
+                                <p data-bind="text: maskedBillerCRNAndCode"></p>
+                            </a>
+                            <a data-bind="click: addBiller" data-icon="plus" data-theme="d" data-iconpos="notext">Add a biller</a>
+                        </li>
+                    </ul>
+
+                    <p data-bind="visible: selectedContact() !== null && !isBillerCRNConstant()">
+                        This biller changes the Customer Reference Number (CRN) for every bill. Please enter the current CRN.
+                    </p>
+
+                    <label for="payBpayCrn" class="ui-hidden-accessible">CRN:</label>
+                    <input type="tel" name="payBpayCrn" id="payBpayCrn" value="" data-bind="value: billerCRN, disable: isBillerCRNPAN" placeholder="CRN" />
+
+                    <label for="payBpayAmount" class="ui-hidden-accessible">Amount:</label>
+                    <input type="number" name="payBpayAmount" id="payBpayAmount" value="" data-bind="value: amount" placeholder="Amount" />
+                    
+                    <a data-role="button" data-theme="b" data-rel="popup" data-position-to="window" data-bind="click: confirmPayBPayDetails" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">
+                        <span>Submit</span>
+                    </a>
+
+                </fieldset>
+            </li>
+        </ul>
+        
+        <div data-role="popup" id="payBpayMessagePopup" data-overlay-theme="a">
+            <div data-role="content" data-theme="a">
+                <span data-bind="text: pageMessage"></span>
+                <a href="#payBpay" data-role="button" data-theme="b" data-rel="back">OK</a>
+	        </div>
+        </div>
+
+        <div data-role="popup" id="chooseBillerPopup" data-overlay-theme="a">
+            <div data-role="header" data-theme="a">
+            </div>
+            <div data-role="content" data-theme="a">
+                <span>Please choose a biller.</span>
+                <!--a data-role="button" data-theme="b" data-bind="click: chooseBiller">OK</a-->
+                <a href="#payBpay" data-role="button" data-theme="b" data-rel="back">OK</a>
+            </div>
+        </div>
+        
+        <div data-role="popup" id="payBpayConfirm" data-overlay-theme="a">
+	         <div data-role="header">
+                <h1>Confirm</h1>
+             </div>
+
+            <div data-role="content" data-theme="a">
+                <p>
+                    Please confirm payment of $<span data-bind="text: amount"></span> from <span data-bind="text: payBPayTransferFromSelectedAccountNameAndNum()"></span> to <span data-bind="text: selectedContactBillerName() ? selectedContactBillerName() : null"></span> (<span data-bind="text: maskedBillerCRNAndCode()"></span>).
+                </p>
+
+                <p class="disclaimer">It is your responsibility to ensure that the details (including Biller Name, Code and CRN) provided by you are correct or your payment may be unsuccessful or may be paid to an unintended account. We do not check that the details provided by you are correct. Any error in payment details may result in a loss of funds. To the extent permitted by law, Bank of NetTeller Ltd. is not liable for loss arising from any error in instructions given by you.</p>
+
+                <a data-role="button" data-theme="b" data-bind="click: performPayBPayTransfer">Pay now</a>
+		        <a data-role="button" data-theme="a" href="#payBpay" data-rel="back">Cancel</a>
+	        </div>
+        </div>
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments" class="ui-btn-active ui-state-persist">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- PAY BPAY RECEIPT / payBpayReceipt -->
+<div data-role="page" id="payBpayReceipt" data-theme="b">
+
+    <div data-role="header" data-theme="a">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Pay B<span class="bpay">PAY</span> Bill</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        <h2>Payment successful!</h2>
+        
+        <p>
+            Your payment of $<span data-bind="text: amount"></span> from <span data-bind="text: transferFromAccountNumAndName"></span> to <span data-bind="text: selectedContactBillerName() ? selectedContactBillerName() : null"></span> (Biller code <span data-bind="text: billerCode"></span>, CRN <span data-bind="text: billerCRN"></span>) has successfully been processed.
+        </p>
+
+        <p>Receipt number: <strong><span data-bind="text: cbsReceiptNumber"></span></strong></p>
+        <a href="#payments" data-role="button" data-theme="b">Done</a>
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments" class="ui-btn-active ui-state-persist">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- End of included file: paybpay.html -->
+
+        
+<!-- CONTACTS -->
+        
+<!-- Start of included file: contacts.html -->
+<!-- PAYEES / payees -->
+<div data-role="page" id="contacts" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Contacts</h1> 
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>       
+        
+        <div class="segmented-control ui-bar-d">
+            <div id="ContactsFilterButtons">
+                <a href="" class="btn-right addContact" data-icon="plus" data-theme="b" data-role="button" data-iconpos="notext" data-bind="click: onAddContactClick">Add a contact</a>
+                 <div id data-role="controlgroup" data-type="horizontal">
+                    <a href="#" data-role="button" data-bind="css: { 'ui-control-active': getTypeFilter() == 0, 'ui-control-inactive': getTypeFilter() != 0} ,click: function (data, event) { filterByContactType('0',data,event) }, clickBubble: false">All</a>
+                    <a href="#" data-role="button" data-bind="css: { 'ui-control-active': getTypeFilter() == 1, 'ui-control-inactive': getTypeFilter() != 1} ,click: function (data, event) { filterByContactType('1',data,event) }, clickBubble: false">Payees</a>
+                    <a href="#" data-role="button" data-bind="css: { 'ui-control-active': getTypeFilter() == 2, 'ui-control-inactive': getTypeFilter() != 2} ,click: function (data, event) { filterByContactType('2',data,event) }, clickBubble: false">B<span style="font-size:85%;">PAY</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="content" data-theme="b" data-bind="visible: ShowContent">     
+        
+        <div id="contactsListView" data-bind="visible: HasContacts">
+            <p></p>                
+            <ul  id="contactsListTable" data-role="listview" data-inset="false" data-theme="d" data-filter="true" data-filter-placeholder="Filter..."  data-split-icon="info" 
+                 data-bind="foreach: GroupedContactsList, jqmRefreshList: GroupedContactsList">            
+                <li data-role="list-divider" data-bind="text: LetterGroup"></li>
+                <!-- ko foreach: Contacts -->
+                <li class="contact-list">                                    
+                    <a href="#" data-bind="click: function () { $root.SelectContact($data) }">
+                        <img data-bind="attr: { src: ContactTypeImage }" class="ul-li-thumb" width="40" height="40" />
+                        <h2 data-bind="text: DisplayString"></h2>
+                        <p data-bind="text: MetaInfoString"></p>
+                    </a>
+                    <a href="#" data-bind="click: function () { $root.SelectContactToModify($data) }, visible: !$root.InPickState()" data-icon="gear"  data-theme="d" data-iconpos="notext">Modify contact</a> 
+                </li>             
+                <!-- /ko -->
+            </ul>        
+        </div>
+
+        <div data-bind="visible: !HasContacts() && getTypeFilter() == 0">
+            <ul data-role="listview" data-inset="true" data-theme="e">
+                <li><div class="noDataMessage" data-bind="text: NoContactsMessage"/></li>
+            </ul>
+        </div>
+
+        <div data-bind="visible: !HasPayees() && getTypeFilter() == 1">
+            <ul data-role="listview" data-inset="true" data-theme="e">
+                <li><div class="noDataMessage" data-bind="text: NoPayeesMessage"/></li>
+            </ul>
+       </div>
+
+        <div data-bind="visible: !HasBillers() && getTypeFilter() == 2">
+            <ul data-role="listview" data-inset="true" data-theme="e">
+                <li><div class="noDataMessage" data-bind="text: NoBillersMessage"/></li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <!-- popups -->
+    <div  data-role="popup" id="modifyContactConfirm" data-overlay-theme="a">        
+       <div data-role="content" data-theme="a">
+            <p><p>What would you like to do?</p></p>
+            <a href="#contacts" data-role="button" data-theme="n" data-bind="click: modifyActionIsDelete">Delete contact</a>
+            <a href="#contacts" data-role="button" data-theme="b" data-bind="click: modifyActionIsEdit">Edit contact</a>
+            <a id="contactCancelButton" href="#contacts" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+        </div>
+    </div>
+    
+    <div  data-role="popup" id="deleteContactConfirm" data-overlay-theme="a">
+        <div data-role="content" data-theme="a">
+            <p><p>Are you sure you want to delete this contact?</p><p><small>Please note, deleting a contact will not affect any future payments. To remove future-dated payments to this contact, please remove them in Internet Banking.</small></p></p>            
+            <a data-role="button" data-theme="n" data-bind="click: acknowledgeDeletion">Delete</a>                            
+            <a href="#contacts" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+        </div>
+    </div>
+
+    <div id="contactInfo" data-role="popup" data-overlay-theme="a">   
+        <div data-role="content" data-theme="a">
+            <p id="contactInfoMessage" data-bind="text: infoMessage"></p>
+            <a href="#contacts" data-role="button" data-theme="b" data-rel="back">OK</a>
+        </div>
+    </div>
+    
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts" class="ui-btn-active ui-state-persist">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+        
+</div>
+
+
+<!-- End of included file: contacts.html -->
+
+        
+<!-- ADD CONTACT -->
+        
+<!-- Start of included file: addcontact.html -->
+<!-- ADD PAYEE/Biller / addContact -->
+<div data-role="page" id="addContact" data-theme="b">
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Add a Contact</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+          
+    <div data-role="content" data-theme="b">
+    
+        <div data-role="popup" id="authenticateViaDevicePopup" data-overlay-theme="a">
+            <div data-role="content" data-theme="a">
+                <ul data-role="listview" data-inset="true" data-theme="a" style="display: none;" data-bind="visible: infoMessage().length > 0">
+                    <li><div data-bind="text: infoMessage"></div></li>
+                </ul>
+                    
+                <ul data-role="listview" data-inset="true" data-theme="e" data-bind="visible: errorMessage().length > 0">
+                    <li>
+                        <div data-bind="text: errorMessage"></div>
+                    </li>
+                </ul>
+                <p data-bind="visible: Devices().length > 0">For security reasons you are required to authenticate with a security device:</p>
+                <div data-bind="visible: Devices().length > 1">
+                    <select id="AuthenticationDeviceSelectList" 
+                            data-bind="options: Devices, 
+                                        optionsText: 'DisplayName',
+                                        value: Device">
+                    </select>
+                </div>
+                <div data-bind="visible: Devices().length === 1">
+                    <h3 data-bind="text: Device() !== undefined ? Device().DisplayName : ''"></h3>
+                </div>
+                    
+                <div data-bind="visible: IsSmsDevice() && smsSent() === false">
+                    <p data-bind="text: Instruction"></p>
+                    <a href="#" data-role="button" data-theme="b" data-bind="visible: IsSmsDevice && smsSent() === false, click: sendOneTimePassword">Send now</a>
+                </div>
+                    
+                <div data-bind="visible: IsTokenDevice() || IsPasswordDevice() || smsSent()">
+                    <input id="answer" data-bind="value: answer, attr: {type: IsTokenDevice() ? 'tel' : 'password', placeholder: IsTokenDevice() ? 'One time password' : 'Second password'}" />
+                    <a href="#" data-role="button" data-theme="b" data-bind="click: validateToken">Submit</a>
+                </div>
+                    
+                <a href="#addContact" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+
+            </div>
+        </div>   
+
+        <div data-role="collapsible-set" data-content-theme="c">
+            <div data-role="collapsible" data-collapsed="true" id="payeeCollapsible" data-theme="a">
+                <h3>Add a payee...</h3>
+
+                <fieldset>
+                    <label for="addPayeeBsb">BSB:</label>
+                    <input type="tel" id="addPayeeBsb" name="addPayeeBsb" placeholder="Search..." maxlength="6" data-bind="value: PayeeBSB" />
+                    <p data-bind="text: BSBDetails"></p>
+                    
+                    <label for="addPayeeAccountNo">Account no:</label>
+                    <input type="tel" name="addPayeeAccountNo" placeholder="" data-bind="value: PayeeAccountNumber" />
+                    
+                    <label for="addPayeeAccountName">Account name:</label>
+                    <input type="text" name="addPayeeAccountName" placeholder="" data-bind="value: PayeeAccountName" /> 
+                                        
+                    <a data-role="button" data-theme="b" data-bind="click: submitPayee">Submit</a>
+                </fieldset>
+
+                <!-- popup -->
+                <div data-role="popup" id="addPayeeConfirm" data-overlay-theme="a">
+                    <div data-role="header">
+                        <h1>Confirm</h1>                        
+                    </div>
+                    <div data-role="content" data-theme="a">
+                        <p class="disclaimer">It is your responsibility to ensure that the details (including Recipient Name, BSB and Account Number) provided by you are correct or your payment may be unsuccessful or may be paid to an unintended account. We do not check that the details provided by you are correct. Any error in payment details may result in a loss of funds. To the extent permitted by law, Bank of NetTeller Ltd. is not liable for loss arising from any error in instructions given by you.</p>
+                        <a data-role="button" data-theme="b" data-bind="click: confirmed">OK</a> 
+                        <a href="#addContact" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="true" id="billerCollapsible" data-theme="a">
+                <h3>Add a biller...</h3>
+                
+                <fieldset>
+                    <label for="addBillerCode">Biller code:</label>
+                    <input type="tel" id="addBillerBcode" name="addBillerBcode" placeholder="Search..." data-bind="value: BillerCode" />
+                    
+                    <p data-bind="text: BillerName"></p>
+                    
+                    <label for="addBillerCRN">CRN:</label>
+                    <input type="tel" name="addBillerCRN" placeholder="" data-bind="disable: DisableCRNField, value: BillerCRN" />
+
+                    <label for="addBillerNickname">Nickname:</label>
+                    <input type="text" name="addBillerNickname" placeholder="" data-bind="value: BillerNickName" />
+                    
+                    <a data-role="button" data-theme="b" data-bind="click: submitBiller">Submit</a>
+                </fieldset>
+
+                <!-- popup -->
+                <div data-role="popup" id="addBillerConfirm" data-overlay-theme="a">
+                    <div data-role="header">
+                        <h1>Confirm</h1>                        
+                    </div>                       
+                    <div data-role="content" data-theme="a">
+                        <p class="disclaimer">It is your responsibility to ensure that the details (including Biller Name, Code and CRN) provided by you are correct or your payment may be unsuccessful or may be paid to an unintended account. We do not check that the details provided by you are correct. Any error in payment details may result in a loss of funds. To the extent permitted by law, Bank of NetTeller Ltd. is not liable for loss arising from any error in instructions given by you.</p>
+                        <p class="disclaimer" data-bind="visible: !isCRNConstant()">
+                            <br/>
+                            This biller changes the Customer Reference Number for every bill. You will need to enter the current CRN when paying them in future.
+                        </p>
+                        <a data-role="button" data-theme="b" data-bind="click: confirmed">OK</a> 
+                        <a href="#addContact" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div data-role="popup" id="addContactMessagePopup" data-overlay-theme="a">
+            <div data-role="content" data-theme="a">
+                <span data-bind="text: pageMessage"></span>
+                <a href="#addContact" data-role="button" data-theme="b" data-rel="back">OK</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                 <li><a href="#accounts" data-icon="grid">Accounts</a></li> <li><a href="#payments" data-icon="nt-payments">Payments</a></li> <li><a href="#contacts" data-icon="nt-contacts" class="ui-btn-active ui-state-persist">Contacts</a></li> <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- End of included file: addcontact.html -->
+
+
+<!-- EDIT CONTACT -->
+        
+<!-- Start of included file: editcontact.html -->
+<!-- EDIT PAYEE/Biller / editContact -->
+<div data-role="page" id="editContact" data-theme="b">
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Edit a Contact</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+          
+    <div data-role="content" data-theme="b">        
+            
+            <div id="editContactInfo" data-role="content" data-bind="visible: hasInfo">
+                <ul data-role="listview" data-inset="true" data-theme="e">
+                    <li><div id="editContactInfoMessage" data-bind="text: infoMessage"></div></li>
+                </ul>
+            </div>   
+
+            <div data-role="content" id="editPayeeCollapsible">                
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                    <li>
+                        <fieldset>                    
+                            <label for="addPayeeBsb">BSB:</label>
+                            <p><span data-bind="text: PayeeBSB"></span></p>                   
+                    
+                            <label for="addPayeeAccountNo">Account no:</label>
+                            <p data-bind="text: PayeeAccountNumber"></p>
+                    
+                            <label for="editPayeeName">Nickname:</label>
+                            <input type="text" name="editPayeeName" placeholder="" data-bind="value: PayeeName" />                    
+                            <a data-role="button" data-theme="b" data-bind="click: submitPayee">Submit</a>
+                        </fieldset>
+                    </li>
+                </ul>
+
+                <!-- popup -->
+                <div data-role="popup" id="editPayeeConfirm" data-overlay-theme="a">
+                    <div data-role="header">
+                        <h1>Confirm</h1>                        
+                    </div>
+                    <div data-role="content" data-theme="a">
+                        <p class="disclaimer">It is your responsibility to ensure that the details (including Recipient Name, BSB and Account Number) provided by you are correct or your payment may be unsuccessful or may be paid to an unintended account. We do not check that the details provided by you are correct. Any error in payment details may result in a loss of funds. To the extent permitted by law, Bank of NetTeller Ltd. is not liable for loss arising from any error in instructions given by you.</p>
+                        <a data-role="button" data-theme="b" data-bind="click: confirmed">OK</a> 
+                        <a href="#editContact" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="content"  id="editBillerCollapsible">                
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                    <li>
+                        <fieldset>                    
+                            <label for="addBillerCode">Biller code/name:</label>
+                            <p><span data-bind="text: BillerCode"></span> <span data-bind="text: BillerName"></span></p>              
+                    
+                            <label for="addBillerCRN">CRN:</label>
+                            <p data-bind="text: BillerCRN"></p>                    
+                    
+                            <label for="editBillerNickname">Nickname:</label>
+                            <input type="text" name="editBillerNickname" placeholder="" data-bind="value: BillerNickName" />                    
+                            <a data-role="button" data-theme="b" data-bind="click: submitBiller">Submit</a>
+                        </fieldset>
+                    </li>
+                </ul>
+
+                <!-- popup -->
+                <div data-role="popup" id="editBillerConfirm" data-overlay-theme="a">
+                    <div data-role="header">
+                        <h1>Confirm</h1>                        
+                    </div>                       
+                    <div data-role="content" data-theme="a">
+                        <p class="disclaimer">It is your responsibility to ensure that the details (including Biller Name, Code and CRN) provided by you are correct or your payment may be unsuccessful or may be paid to an unintended account. We do not check that the details provided by you are correct. Any error in payment details may result in a loss of funds. To the extent permitted by law, Bank of NetTeller Ltd. is not liable for loss arising from any error in instructions given by you.</p>
+                        <a data-role="button" data-theme="b" data-bind="click: confirmed">OK</a> 
+                        <a href="#editContact" data-role="button" data-theme="a" data-rel="back">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                 
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li> 
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li> 
+                <li><a href="#contacts" data-icon="nt-contacts" class="ui-btn-active ui-state-persist">Contacts</a></li> 
+                <li><a href="#settings" data-icon="gear">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- End of included file: editcontact.html -->
+
+        
+<!-- SETTINGS -->
+        
+<!-- Start of included file: settings.html -->
+<!-- SETTINGS / settings -->
+<div data-role="page" id="settings" data-theme="b">
+    
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Settings</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        
+        <ul data-role="listview" data-inset="true" data-theme="e" data-bind="visible: status().length > 0">
+            <li><div data-bind="text: status"></div></li>
+        </ul>
+			        
+        <div data-bind="visible: canEditPin">
+            <ul data-role="listview" data-inset="true" data-theme="d">
+
+                <li><a data-bind="click: changePin">Change your PIN</a></li>
+                <li><a href="#deregisterDevice">Deregister Device</a></li>
+            </ul>
+            <p class="disclaimer"></p>
+        </div>
+
+        <div data-bind="visible: canCreatePin">
+            <ul data-role="listview" data-inset="true" data-theme="d">
+                <li><a data-bind="click: setUpPin">Set up your PIN</a></li>
+            </ul>
+            <p class="disclaimer"></p>
+        </div>
+
+        <div data-role="collapsible" data-theme="a" data-content-theme="c">
+            <h3>About</h3>
+            <p class="disclaimer">&copy; 2013 The System Works Group Ltd</p>
+        </div>
+
+        <ul data-role="listview" data-inset="true" data-theme="d">
+            <li><a href="#help">Help</a></li>
+        </ul>
+
+        <p><div class="center-wrapper"><img src="images/build/powered-by-netteller-256@2x.png" width=128 height=38 alt="Powered by NetTeller logo"></div></p>
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear" class="ui-btn-active ui-state-persist">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- CHANGE PIN / changePIN -->
+<div data-role="page" id="changePin" data-theme="b">
+
+    <div data-role="header" data-theme="a">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Change PIN</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        <p>This will allow you to change the PIN associated with your customer number. Please note that this change affects all registered devices.</p>
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear" class="ui-btn-active ui-state-persist">Settings</a></li>
+           </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- DEREGISTER DEVICE / deregisterDevice -->
+<div data-role="page" id="deregisterDevice" data-theme="b">
+
+    <div data-role="header" data-theme="a">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Deregister Device</h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        
+        <ul data-role="listview" data-inset="true" data-theme="e" data-bind="visible: deregisterDeviceStatus().length > 0">
+            <li><div data-bind="text: deregisterDeviceStatus"></div></li>
+        </ul>
+
+        <p>This will deregister the current device from using your PIN to login. Registering the device for PIN login again in future will make use of any previously registered PIN.</p>
+
+        <p>Do you wish to deregister this device?</p>
+        
+        <a href="" data-bind="click: deregisterDevice" data-role="button" data-theme="b">Yes</a>
+
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear" class="ui-btn-active ui-state-persist">Settings</a></li>
+           </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- PERSONAL SETTINGS / personalSettings -->
+<div data-role="page" id="personalSettings" data-theme="b">
+
+    <div data-role="header" data-theme="a">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1></h1>
+        <a href="" data-icon="" class="ui-btn-right logout-button">Logout</a>
+    </div>
+
+    <div data-role="content" data-theme="b">
+        This feature has not been implemented yet.
+    </div>
+
+    <div data-role="footer" data-id="foo1" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                
+                <li><a href="#accounts" data-icon="grid">Accounts</a></li>
+                <li><a href="#payments" data-icon="nt-payments">Payments</a></li>
+                <li><a href="#contacts" data-icon="nt-contacts">Contacts</a></li>
+                <li><a href="#settings" data-icon="gear" class="ui-btn-active ui-state-persist">Settings</a></li>
+           </ul>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- End of included file: settings.html -->
+
+        
+<!-- CONTACT US -->
+        
+<!-- Start of included file: contactus.html -->
+<!-- CONTACT US / contactUs -->
+<div data-role="page" id="contactUs" data-theme="b">
+
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="" class="ui-btn-left back-button" data-icon="arrow-l" >Back</a>
+        <h1>Contact Us</h1>
+    </div>
+
+    <div data-role="content" data-theme="b">
+    	<p>Contact Bank of NetTeller Ltd. by calling or emailing us.</p>
+        <ul data-role="listview" data-inset="true">
+           <li data-theme="d"><a href="mailto:tswg.products@tswg.com.au">Feedback</a></li>
+           <li data-theme="d"><a href="tel:123123">Call Us on 123 123</a></li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h4><img src="images/build/nt-logo@2x.png" width=117 height=30 alt="NetTeller logo"></h4>
+    </div>
+
+</div>
+<!-- End of included file: contactus.html -->
+
+        
+<!-- This was built for client BASE-ULTRACS, targetting . -->
+<!-- Built on machine A01075 by Richard.Schedler, 2013-06-20 23:10:43. -->
+
     </body>
 </html>

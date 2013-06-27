@@ -1,0 +1,1 @@
+define(["ui/defaults","ui/customHandlers","ui/validation","lib/deviceReady!"],function(){})

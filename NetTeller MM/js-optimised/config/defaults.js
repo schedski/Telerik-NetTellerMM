@@ -1,0 +1,1 @@
+define({backgroundApplicationTimeout:120,loadingIndicatorMinimumDisplayTime:1600,loadingIndicatorTheme:"a",transactionsDefaultDateFormat:"dd MMMM yyyy",googleMapsKey:"AIzaSyCBcp6RRiapUgEsgaeCqHvOiRwCZESZFDg"})
