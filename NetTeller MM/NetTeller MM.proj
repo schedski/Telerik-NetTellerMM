@@ -32,7 +32,6 @@
     <Folder Include="App_Resources\Android\drawable-nodpi">
       <Platform>Android</Platform>
     </Folder>
-    <Folder Include="images\build\accounts" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\config.xml" />
@@ -61,6 +60,17 @@
   <ItemGroup>
     <Content Include="atms.json" />
     <Content Include="compiled.css" />
+    <Content Include="images\build\accounts\creditcard.png" />
+    <Content Include="images\build\accounts\creditcard_333.png" />
+    <Content Include="images\build\accounts\loan.png" />
+    <Content Include="images\build\accounts\loan_333.png" />
+    <Content Include="images\build\accounts\savings-40.png" />
+    <Content Include="images\build\accounts\savings.png" />
+    <Content Include="images\build\accounts\savings_333.png" />
+    <Content Include="images\build\accounts\termdeposit.png" />
+    <Content Include="images\build\accounts\termdeposit_333.png" />
+    <Content Include="images\build\accounts\transaction.png" />
+    <Content Include="images\build\accounts\transaction_333.png" />
     <Content Include="images\build\backspace-icon-active.png" />
     <Content Include="images\build\backspace-icon.png" />
     <Content Include="images\build\beta-ribbon.png" />
